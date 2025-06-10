@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Advancing NeSy AI with Dynamic Urban Simulation">
-  <meta name="keywords" content="NeSy AI, Compositional Generalizaion, Abstract Reasoning">
+        content="Bilevel Learning for Bilevel Planning">
+  <meta name="keywords" content="Task and Motion Planning, Robotics, Abstraction Learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LogiCity</title>
+  <title>IVNTR</title>
 
   <link rel="icon" type="image/png" href="./static/images/airlab.png"> 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -131,16 +131,15 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div style="text-align:center;">
-        <iframe width="784" height="441" src="https://www.youtube.com/embed/a18hnDWMarc?si=LJDlbMFeykzBHawW" title="Intro to LogiCity" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="1120" height="630" src="https://www.youtube.com/embed/a18yDb_yQOU?si=Yx0OwZOuYI5GrWpp" title="Intro to IVNTR" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     <br>
     <h2 class="subtitle has-text-centered">
-      <strong>LogiCity</strong> is a new simulator and benchmark for NeSy AI. It simulates dynamic urban environments with <strong>flexible</strong> <strong>abstractions</strong>.
-      It features <b>Inductive Abstract Reasoning</b>, where the most recent LLM (<b>GPT-4o</b>) falls behind human.
+      <strong>IVNTR</strong> is a bilevel learning framework that could automatically <b>Invent Neural Abstractions (Predicates)</b> for long-horizon abstract planning tasks with <b>Continous/High-dimensional States</b>.
     </h2>
     <div class="hero-body">
       <div style="text-align:center;">
-        <img src="static\images\teaser.png" style="width:80%; height:auto;">
+        <img src="static\images\Teaser.png" style="width:80%; height:auto;">
       </div>
 
     </div>
@@ -149,17 +148,6 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-        <!-- Paper video. -->
-        <!-- <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Video</h2>
-            <div class="publication-video">
-              <iframe src="https://www.youtube.com/embed/V5hYTz5os0M?rel=0&amp;showinfo=0"
-                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div> -->
-        <!--/ Paper video. -->
       
     <!-- <br> -->
     <!-- Abstract. -->
@@ -174,22 +162,20 @@
             }
           </style>
           <p>
-            Recent years have witnessed the rapid development of Neuro-Symbolic (NeSy) AI systems, which integrate symbolic reasoning into deep neural networks.
-            However, most existing benchmarks for NeSy AI fail to provide <b>long-horizon reasoning</b> task with <b>complex multi-agent interaction</b>.
-            Furthermore, they are usually constrained by <b>fixed and simplistic logical rules over limited entities</b>, making them inadequate for capturing real-world complexities.
+            A robot that learns from demonstrations should not just imitate what it sees---it should <b>understand the high-level concepts</b> that are being demonstrated and generalize them to new tasks. 
+            Bilevel planning is a hierarchical model-based approach where predicates (relational state abstractions) can be leveraged to achieve compositional generalization.
           </p>
           <p>
-            To address these crucial gaps, we introduce LogiCity, the first simulator based on customizable first-order logic (FOL) for an urban-like environment with multiple dynamic agents.
-            LogiCity models diverse urban elements using semantic and spatial <b>concepts</b>, such as <span class="courier-abs">IsAmbulance(X)</span> and <span class="courier-abs">IsClose(X,Y)</span>.
-            These concepts are used to define FOL rules governing the behavior of various agents.
-            Since the concepts and rules are <strong>abstractions</strong>, they can be universally applied to cities with <strong>any agent compositions</strong>, facilitating the instantiation of diverse scenarios.
-            Besides, a key benefit of our LogiCity is its support for <strong>user-configurable abstractions</strong>, enabling customizable simulation complexities for logical reasoning.
+            However, previous bilevel planning approaches depend on predicates that are either hand-engineered or restricted to very simple forms, limiting their scalability to sophisticated, high-dimensional state spaces. 
+            To address this limitation, we present IVNTR, the first bilevel planning approach capable of <strong>learning neural predicates directly from demonstrations</strong>. 
+            Our key innovation is a neuro-symbolic <strong>bilevel learning framework</strong> that mirrors the structure of bilevel planning. 
+            In IVNTR, symbolic learning of the predicate "effects" and neural learning of the predicate "classifiers" alternate, with each providing guidance for the other.
           </p>
           <p>
-            To explore various aspects of NeSy AI, we introduces two tasks, one features long-horizon sequential decision-making, and the other focuses on one-step visual reasoning, varying in difficulty and agent behaviors.
-            Our extensive evaluation using LogiCity reveals the advantage of NeSy frameworks in <strong>abstract reasoning</strong>. 
-            Moreover, we highlight the significant challenges of handling more complex abstractions in long-horizon multi-agent reasoning scenarios or under high-dimensional, imbalanced data.
-            With the flexible design, various features, and newly raised challenges, we believe LogiCity represents a pivotal step for advancing the next generation of NeSy AI.
+            We evaluate IVNTR in six diverse robot planning domains, demonstrating its effectiveness in abstracting various continuous and high-dimensional states. 
+            While most existing approaches struggle to generalize (with less than 35% success rate), our IVNTR achieves an average success rate of 77% on unseen tasks.
+            Additionally, we showcase IVNTR on a mobile manipulator, where it learns to perform real-world mobile manipulation tasks and generalizes to unseen test scenarios that feature new objects, new states, and longer task horizons. 
+            Our findings underscore the promise of <strong>learning and planning with abstractions</strong> as a path towards high-level generalization.
           </p>
         </div>
       </div>
@@ -207,12 +193,12 @@
         <h2 class="title is-3">Contribution</h2>
         <div class="content has-text-justified">
           <li>
-            We propose a pioneer <strong>abstraction</strong>-based dynamic city simulator <b>LogiCity</b> for NeSy AI, which is <strong>flexible</strong> and scalable for various reasoning tasks.
+            We propose a novel <strong>bilevel-learning</strong> system (IVNTR) that could invent <b>neural predicates</b> for bilevel planning.
           <li>
-            We develop Sequential Decision Making and Visual Reasoning tasks in LogiCity to evaluate the compositional generalization capability of various models.
+            We evaluate IVNTR in six diverse robot planning domains, demonstrating its effectiveness in <strong>abstracting various continuous and high-dimensional states</strong>.
           </li>
           <li>
-            We conduct exhaustive experiments and demonstrate the advantages of NeSy AI in compositional generalization, while also revealing the new reasoning challenges introduced by LogiCity.
+            We showcase IVNTR on a mobile manipulator, where it learns to perform real-world mobile manipulation tasks and generalizes to unseen test scenarios.
           </li>
         </div>
       </div>
