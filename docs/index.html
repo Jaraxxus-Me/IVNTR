@@ -141,7 +141,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div style="text-align:center;">
-        <iframe width="1120" height="630" src="https://www.youtube.com/embed/a18yDb_yQOU?si=Yx0OwZOuYI5GrWpp" title="Intro to IVNTR" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="672" height="378" src="https://www.youtube.com/embed/a18yDb_yQOU?si=Yx0OwZOuYI5GrWpp" title="Intro to IVNTR" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     <br>
     <h2 class="subtitle has-text-centered">
@@ -149,7 +149,7 @@
     </h2>
     <div class="hero-body">
       <div style="text-align:center;">
-        <img src="static\images\Teaser.png" style="width:80%; height:auto;">
+        <img src="static\images\Teaser.jpg" style="width:80%; height:auto;">
       </div>
 
     </div>
@@ -223,98 +223,26 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full_width">
         <hr>
-        <h2 class="title is-3">Simulation Examples</h2>
+        <h2 class="title is-3">Overall Method</h2>
         <br>
+        <img src="static\images\Main.svg" class="center"/>
         <div class="content has-text-justified">
-          <style>
-            .courier-pre {
-              font-family: "Courier New", Courier, monospace;
-              font-weight: bold;
-              background-color: rgba(255, 170, 0, 0.429);
-              padding: 2px 4px;
-              border-radius: 4px;
-            }
-            .courier-op {
-              font-family: "Courier New", Courier, monospace;
-              font-weight: bold;
-              padding: 2px 4px;
-              border-radius: 4px;
-            }
-          </style>
-          <p>[1] An entity will <span class="courier-pre">Stop</span> if it is <span class="courier-pre">CollingClose</span> with another entity, <span class="courier-op">OR</span>,
-            if it is <span class="courier-pre">AtIntersection</span> with another entity <span class="courier-pre">InIntersection</span>, <span class="courier-op">OR</span>,
-            if it is <span class="courier-pre">AtIntersection</span> with another <span class="courier-pre">HigherPriority</span> entity <span class="courier-pre">AtIntersection</span>.
+          <br>  
+          <p>
+            Bilevel-learning during training and bi-level planning during inference.
           </p>
-          <video id="teaser1" controls style="flex: 50%; max-width: 100%;">
-            <source src="./static/images/1.mp4" type="video/mp4">
-          </video>
+          <p>
+            (a) During training, IVNTR leverages Bilevel Learning to invent neural predicates pool. Down-selection is then conducted to minimize expected planning time and planning success. Operator and sampler learning is conducted in the end.
+          </p>
+          <p>
+            (b) During inference, IVNTR leverages Bilevel Planning to plan with the invented neural predicates. The planner first uses neural predicates to abstract the high-dimensional states into discrete symbols, and then alternates between search and sampling to find a plan that achieves the goal.
+          </p>
+          </p>
         </div>
-
-        <div id="more-examples" style="display: none;">
-          <br>
-          <div class="content has-text-justified">
-            <p>[2] An entity will <span class="courier-pre">Slow</span> if it is <span class="courier-pre">Tiro</span> with another <span class="courier-pre">Pedestrian</span> entity <span class="courier-pre">NextTo</span> it.
-            </p>
-            <video id="teaser2" controls style="flex: 50%; max-width: 100%;">
-              <source src="./static/images/2.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <br>
-          <div class="content has-text-justified">
-            <p>[3] An entity will move <span class="courier-pre">Fast</span> if it is a <span class="courier-pre">HigherPriority</span> <span class="courier-pre">Reckless</span> entity with another <span class="courier-pre">Car</span> entity <span class="courier-pre">AtIntersection</span>.
-            </p>
-            <video id="teaser3" controls style="flex: 50%; max-width: 100%;">
-              <source src="./static/images/3.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <br>
-          <div class="content has-text-justified">
-            <p>[4] An entity will <span class="courier-pre">Slow</span> if it is a <span class="courier-pre">Police</span> entity with at least two other <span class="courier-pre">Young</span> entities <span class="courier-pre">NextTo</span> each other, <span class="courier-op">AND</span> one of them is <span class="courier-pre">NextTo</span> to it.
-            </p>
-            <video id="teaser4" controls style="flex: 50%; max-width: 100%;">
-              <source src="./static/images/4.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-
-        <br>
-        <div class="content has-text-centered">
-          <button class="button is-primary" onclick="showMore()">More</button>
-        </div>
-
       </div>
     </div>
-  </div>
-</section>
-
-<script>
-  function showMore() {
-    var moreExamples = document.getElementById('more-examples');
-    moreExamples.style.display = moreExamples.style.display === 'none' ? 'block' : 'none';
-  }
-</script>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Method. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full_width">
-        <hr>
-        <h2 class="title is-3">Simulation Rendering</h2>
-      <div class="hero-body">
-      <div style="text-align:center;">
-        <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
-          <source src="./static/images/rendering.mp4" type="video/mp4">
-        </video>
-      </div>
-      <br>
-      <h2 class="subtitle has-text-centered">
-        By virtue of the foundamental generative models, LogiCity supports a diverse range of rendering styles.
-      </h2>
-    </div>
-  </div>
+    <hr>
+</div>
 </section>
 
 <section class="section">
@@ -323,105 +251,71 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full_width">
         <hr>
-        <h2 class="title is-3">Safe Path Following (SPF)</h2>
+        <h2 class="title is-3">Bilevel Learning --- Neural Classifier Learning</h2>
         <br>
         <div class="columns">
           <div class="column custom-column-80 has-text-centered">
             <p>
-              Safe Path Following (SPF) requires an algorithm to control an agent in LogiCity, navigating it to the goal while maximizing the trajectory reward.
-              Since the ego agent could meet with complex situations along the way and needs to smartly plan to maximize trajectory return, this task features <strong>long-horizon</strong> reasoning with <strong>multiple dynamic agents</strong>.
-            </p>
-            <br>
-            <p>
-              Note that SPF also features <strong>Different Train/Test Agent Sets</strong>.
+              IVNTR starts by proposing the <strong>effects across differen actions</strong> of a predicate. 
+              The effects can be used to derive supervision labels on the low-level state transitions, which are then used to train the <strong>neural classifiers</strong> of the predicate.
             </p>
           </div>
           <div class="column custom-column-20">
             <figure class="image">
-              <img src="./static/images/spf.png" alt="Description of the image" style="width: 100%; height: auto;">
+              <img src="./static/images/Neural.svg" alt="Description of the image" style="width: 100%; height: auto;">
             </figure>
           </div>
         </div>
-        
-        <div class="columns is-centered">
-          <div class="column is-full-width">
-            <br>
-            <h4 class="title is-4">Hard mode visualization</h4>
-            <p>
-              The FOL rule and a training example in the hard mode for the SPF task is shown below. 
-            </p>
-            <br>
-          </div>
-        </div>
-
-        <div class="columns">
-          <div class="column is-half">
-            <h5 class="title is-5">Clause Set</h5>
-            <pre id="short-rule" style="font-family: 'Monaco', monospace; overflow-x: auto; text-align: left; max-width: 100%; white-space: pre-wrap;">
-<code>Stop(X):- Not(IsAmbulance(X)), Not(IsOld(X)), IsAtInter(X), IsInInter(Y).
-Stop(X):- Not(IsAmbulance(X)), Not(IsOld(X)), IsAtInter(X), IsAtInter(Y), HigherPri(Y, X).
-...</code>
-            </pre>
-            <pre id="full-rule" style="display: none; font-family: 'Monaco', monospace; overflow-x: auto; text-align: left; max-width: 100%; white-space: pre-wrap;">
-<code>Stop(X):- Not(IsAmbulance(X)), Not(IsOld(X)), IsAtInter(X), IsInInter(Y).
-Stop(X):- Not(IsAmbulance(X)), Not(IsOld(X)), IsAtInter(X), IsAtInter(Y), HigherPri(Y, X).
-Stop(X):- Not(IsAmbulance(X)), Not(IsOld(X)), IsInInter(X), IsInInter(Y), IsAmbulance(Y).
-Stop(X):- Not(IsAmbulance(X)), Not(IsPolice(X)), IsCar(X), Not(IsInInter(X)), Not(IsAtInter(X)), LeftOf(Y, X), IsClose(Y, X), IsPolice(Y).
-Stop(X):- IsBus(X), Not(IsInInter(X)), Not(IsAtInter(X)), RightOf(Y, X), NextTo(Y, X), IsPedestrian(Y).
-Stop(X):- IsAmbulance(X), RightOf(Y, X), IsOld(Y).
-Stop(X):- Not(IsAmbulance(X)), Not(IsOld(X)), CollidingClose(X, Y).</code>
-            </pre>
-            <button id="toggle-button" onclick="toggleRule()">Extend Rule</button>
-          </div>
-          <div class="column is-half">
-            <h5 class="title is-5">Example training episode</h5>
-            <video controls autoplay muted loop style="width: 100%; height: auto;">
-              <source src="static/images/spf_train.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-
-        <div class="columns is-centered">
-          <div class="column is-full-width">
-            <h5 class="title is-5">Testing episode 1</h5>
-            <video controls autoplay muted loop style="width: 100%; height: auto;">
-              <source src="static/images/spf_test1.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-            <div id="more-testing-episodes" style="display: none;">
-              <h5 class="title is-5">Testing episode 2</h5>
-              <video controls autoplay muted loop style="width: 100%; height: auto;">
-                <source src="static/images/spf_test2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-        
-              <h5 class="title is-5">Testing episode 3</h5>
-              <video controls autoplay muted loop style="width: 100%; height: auto;">
-                <source src="static/images/spf_test3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-        
-            <br>
-            <div class="content has-text-centered">
-              <button class="button is-primary" onclick="showMoreTesting()">More</button>
-            </div>
-          </div>
-        </div>
-        
-        <script>
-          function showMoreTesting() {
-            var moreTestingEpisodes = document.getElementById('more-testing-episodes');
-            moreTestingEpisodes.style.display = moreTestingEpisodes.style.display === 'none' ? 'block' : 'none';
-          }
-        </script>
-
       </div>
     </div>
   </div>
+</section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr>
+        <h2 class="title is-3">Bilevel Learning --- Symbolic Effect Learning</h2>
+        <br>
+        <div class="columns">
+          <div class="column custom-column-80 has-text-centered">
+            <p>
+              After neural learning, IVNTR collects the training loss of the classifier across different actions.
+              The loss can be used as guidance on the next iteration of symbolic effect proposed.
+              Here we used a UCT expansion algorithm to track and propose the symbolic effects.
+            </p>
+          </div>
+          <div class="column custom-column-20">
+            <figure class="image">
+              <img src="./static/images/Symbolic.svg" alt="Description of the image" style="width: 100%; height: auto;">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{Li2025RSS,
+      author    = {Li, Bowen and Silver, Tom and Scherer, Sebastian and Gray, Alex},
+      title     = {{Bilevel Learning for Bilevel Planning}},
+      booktitle = {Proceedings of the Robotics: Science and Systems (RSS)},
+      year      = {2025}
+  }</code></pre>
+  </div>
+</section>
+
+
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    The work was done when Bowen Li and Pranay Reddy were interns at The Robotics Institute, CMU. The authors would like to thank all members of the Team Explorer for providing data collected from the DARPA Subterranean Challenge. Our code is built upon <a href="https://github.com/fanq15/FewX">FewX</a>, for which we sincerely express our gratitute to the authors.
+  </div>
 </section>
 
 <script>
