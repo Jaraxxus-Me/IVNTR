@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Bilevel Learning for Bilevel Planning">
+  <meta name="keywords" content="Task and Motion Planning, Robotics, Abstraction Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IVNTR</title>
+
+  <link rel="icon" type="image/png" href="./static/images/airlab.png"> 
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/airlab.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://jaraxxus-me.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://jaraxxus-me.github.io/LogiCity/">
+            LogiCity - NeurIPS 2024
+          </a>
+          <a class="navbar-item" href="https://jaraxxus-me.github.io/ECCV2022_AirDet">
+            AirDet - ECCV 2022
+          </a>
+          <a class="navbar-item" href="https://jaraxxus-me.github.io/ICCV2023_PVTpp">
+            PVT++ - ICCV 2023
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <img src="./static/images/title.png" width="260">
+          <h1 class="title is-2 publication-title">Bilevel Learning for Bilevel Planning</h1>
+          <div class="column is-full_width">
+            <h2 class="title is-3">Robotics: Science and Systems '25</h2>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jaraxxus-me.github.io/">Bowen Li</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://tomsilver.github.io/">Tom Silver</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="http://theairlab.org/team/sebastian/">Sebastian Scherer</a><sup>1,*</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=yZDEX68AAAAJ&hl=en">Alexander Gray</a><sup>2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Carnegie Mellon University</span>,
+            <span class="author-block"><sup>2</sup>Centaur AI Institute</span>,
+            <span class="author-block"><sup>3</sup>Princeton University</span>,
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://www.arxiv.org/abs/2502.08697"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=a18yDb_yQOU&t=2s"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/centaur-ai/IVNTR"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+      <video id="teaser1" autoplay muted controls style="flex: 50%; max-width: 100%;">
+        <source src="./static/images/teaser_video.mp4" type="video/mp4">
+      </video>
+    <br>
+    <br>
+    <h2 class="subtitle has-text-centered">
+      <strong>IVNTR</strong> can automatically <b>invent neural abstractions (predicates)</b> for <b>generalizable</b> long-horizon planning tasks with <b>continuous and high-dimensional states</b>.
+    </h2>
+    <br>
+    <br>
+    <div class="hero-body">
+      <div style="text-align:center;">
+        <img src="static\images\Teaser.jpg" style="width:100%; height:auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+      
+    <!-- <br> -->
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <style>
+            .courier-abs {
+              font-family: "Courier New", Courier, monospace;
+              font-weight: bold;
+            }
+          </style>
+          <p>
+            A robot that learns from demonstrations should not just imitate what it sees---it should <b>understand the high-level concepts</b> that are being demonstrated and generalize them to new tasks. 
+            Bilevel planning is a hierarchical model-based approach where predicates (relational state abstractions) can be leveraged to achieve compositional generalization.
+          </p>
+          <p>
+            However, previous bilevel planning approaches depend on predicates that are either hand-engineered or restricted to very simple forms, limiting their scalability to sophisticated, high-dimensional state spaces. 
+            To address this limitation, we present IVNTR, the first bilevel planning approach capable of <strong>learning neural predicates directly from demonstrations</strong>. 
+            Our key innovation is a neuro-symbolic <strong>bilevel learning framework</strong> that mirrors the structure of bilevel planning. 
+            In IVNTR, symbolic learning of the predicate "effects" and neural learning of the predicate "classifiers" alternate, with each providing guidance for the other.
+          </p>
+          <p>
+            We evaluate IVNTR in six diverse robot planning domains, demonstrating its effectiveness in abstracting various continuous and high-dimensional states. 
+            While most existing approaches struggle to generalize (with less than 35% success rate), our IVNTR achieves an average success rate of 77% on unseen tasks.
+            Additionally, we showcase IVNTR on a mobile manipulator, where it learns to perform real-world mobile manipulation tasks and generalizes to unseen test scenarios that feature new objects, new states, and longer task horizons. 
+            Our findings underscore the promise of <strong>learning and planning with abstractions</strong> as a path towards high-level generalization.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- <br> -->
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Contributions</h2>
+        <div class="content has-text-justified">
+          <li>
+            We propose a novel <strong>bilevel-learning</strong> system (IVNTR) that can invent <b>neural predicates</b> for bilevel planning.
+          <li>
+            We evaluate IVNTR in six diverse robot planning domains, demonstrating its effectiveness in <strong>abstracting various continuous and high-dimensional states</strong>.
+          </li>
+          <li>
+            We showcase IVNTR on a mobile manipulator, where it learns to perform real-world mobile manipulation tasks and generalizes to unseen test scenarios.
+          </li>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr>
+        <h2 class="title is-3">Overall Method</h2>
+        <br>
+        <img src="static\images\Main.svg" class="center"/>
+        <div class="content has-text-justified">
+          <br>  
+          <p>
+            Bilevel-learning during training and bilevel planning during inference.
+          </p>
+          <p>
+            (a) During training, IVNTR leverages bilevel learning to invent neural predicates, neural samplers, and symbolic operators
+          </p>
+          <p>
+            (b) During inference, IVNTR leverages bilevel planning. The planner first uses neural predicates to abstract the high-dimensional states into discrete symbols, and then alternates between search and sampling to find a plan that achieves the goal.
+          </p>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr>
+        <h2 class="title is-3">Bilevel Learning: Neural Classifier Learning</h2>
+        <br>
+        <img src="static\images\Neural.jpg" class="center"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr>
+        <h2 class="title is-3">Bilevel Learning: Symbolic Effect Learning</h2>
+        <br>
+        <img src="static\images\Symbolic.jpg" class="center"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr>
+        <h2 class="title is-3">Domains & Quantative Results</h2>
+        <div style="text-align:center;">
+          <img src="static\images\quantative.png" style="width:100%; height:auto;">
+        </div>
+        <br>
+        <p>
+          We evaluate IVNTR in six diverse robot planning domains, demonstrating its effectiveness in abstracting various continuous and high-dimensional states. 
+          While most existing approaches struggle to generalize (with less than 35% success rate), our IVNTR achieves an average success rate of 77% on unseen tasks.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{Li2025RSS,
+      author    = {Li, Bowen and Silver, Tom and Scherer, Sebastian and Gray, Alex},
+      title     = {{Bilevel Learning for Bilevel Planning}},
+      booktitle = {Proceedings of the Robotics: Science and Systems (RSS)},
+      year      = {2025}
+  }</code></pre>
+  </div>
+</section>
+
+
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    The work was partly done when Bowen Li was an intern at the Centaur AI Institute. Our code is largely based on 
+    <a href="https://github.com/Learning-and-Intelligent-Systems/predicators">predicators@MIT-LIS-Group</a>, we would 
+    like to express our gratitude to the developers for their open-source code and helpful discussions.
+  </div>
+</section>
+
+<script>
+  function toggleRule() {
+    var shortRule = document.getElementById("short-rule");
+    var fullRule = document.getElementById("full-rule");
+    var toggleButton = document.getElementById("toggle-button");
+    
+    if (fullRule.style.display === "none") {
+      fullRule.style.display = "block";
+      shortRule.style.display = "none";
+      toggleButton.textContent = "Collapse Rule";
+    } else {
+      fullRule.style.display = "none";
+      shortRule.style.display = "block";
+      toggleButton.textContent = "Extend Rule";
+    }
+  }
+</script>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
